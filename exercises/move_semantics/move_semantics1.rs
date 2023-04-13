@@ -1,16 +1,15 @@
 // move_semantics1.rs
 // Execute `rustlings hint move_semantics1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 fn main() {
     let vec0 = Vec::new();
 
-    let vec1 = fill_vec(vec0);
+    let mut vec1 = fill_vec(vec0); // vec0 is now moved into fill_vec, as it does not impl Copy trait.
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
 
-    vec1.push(88);
+    vec1.push(88); // push borrows mut ref, so vec1 needs to be mut
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
 }

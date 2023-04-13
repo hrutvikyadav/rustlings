@@ -1,21 +1,25 @@
 // strings3.rs
 // Execute `rustlings hint strings3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 fn trim_me(input: &str) -> String {
     // TODO: Remove whitespace from both ends of a string!
-    ???
+    input.trim().to_string()
 }
 
 fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There's multiple ways to do this!
-    ???
+    // input + "world!" doesnot work as concatenation with + needs owned string on left
+    // can be solved by creating owned string from str slice
+    // input.to_owned() + "world!"
+    // String::from(input) + "world!" // or by creating new string with String::from() or .to_string
+    // format! returns a string, also possible
+    format!("{} {}", input.to_owned(), "world!")
 }
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons"!
-    ???
+    input.replace("cars", "balloons")
 }
 
 #[cfg(test)]
